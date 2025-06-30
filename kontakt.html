@@ -1,570 +1,561 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt - Boris</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            gap: 30px;
-        }
-
-        .navbar a {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 8px;
-        }
-
-        .navbar a:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .navbar a.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.15);
-            font-weight: 600;
-        }
-
-        .portfolio-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            font-weight: 600;
-            color: #667eea;
-        }
-
-        .main-container {
-            padding: 60px 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .content-container {
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .page-header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 50px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-        }
-
-        .page-header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            letter-spacing: -2px;
-        }
-
-        .page-header p {
-            font-size: 1.3rem;
-            color: #4a5568;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .contact-info-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 50px;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-info-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 100px rgba(102, 126, 234, 0.2);
-        }
-
-        .contact-info-card h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .contact-item:hover {
-            border-color: #667eea;
-            transform: translateX(8px);
-            background: rgba(102, 126, 234, 0.05);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-details h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 5px;
-        }
-
-        .contact-details p {
-            color: #4a5568;
-            font-size: 1.1rem;
-        }
-
-        .contact-details a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
-        .contact-form-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 50px;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-form-card h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-            background: #f8fafc;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .form-notice {
-            background: #e6fffa;
-            border: 2px solid #81e6d9;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-            color: #234e52;
-        }
-
-        .form-notice h4 {
-            margin-bottom: 10px;
-            color: #2c7a7b;
-        }
-
-        .alternative-contact {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-        }
-
-        .alternative-contact h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 20px;
-        }
-
-        .alternative-contact p {
-            color: #4a5568;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .email-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
-
-        .email-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(102, 126, 234, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .page-header {
-                padding: 30px 20px;
-            }
-
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .contact-info-card,
-            .contact-form-card {
-                padding: 30px 20px;
-            }
-
-            header {
-                padding: 15px 20px;
-            }
-
-            .navbar {
-                gap: 15px;
-            }
-
-            .alternative-contact {
-                padding: 30px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - Boris Kumbric</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+    
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .navbar {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .navbar a {
+      color: #4a5568;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+    
+    .navbar a:hover {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .navbar a.active {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.15);
+      font-weight: 600;
+    }
+    
+    .portfolio-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #667eea;
+    }
+    
+    .main-container {
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .content-container {
+      max-width: 1200px;
+      width: 100%;
+    }
+    
+    .page-header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 50px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+    }
+    
+    .page-header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+    
+    .page-header p {
+      font-size: 1.3rem;
+      color: #4a5568;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .contact-info-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 100px rgba(102, 126, 234, 0.2);
+    }
+    
+    .contact-info-card h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .contact-item:hover {
+      border-color: #667eea;
+      transform: translateX(8px);
+      background: rgba(102, 126, 234, 0.05);
+    }
+    
+    .contact-icon {
+      font-size: 2rem;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .contact-details h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 5px;
+    }
+    
+    .contact-details p {
+      color: #4a5568;
+      font-size: 1.1rem;
+    }
+    
+    .contact-details a {
+      color: #667eea;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-details a:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+    
+    .contact-form-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-form-card h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      background: #f8fafc;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+    
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    
+    .form-notice {
+      background: #e6fffa;
+      border: 2px solid #81e6d9;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      color: #234e52;
+    }
+    
+    .form-notice h4 {
+      margin-bottom: 10px;
+      color: #2c7a7b;
+    }
+    
+    .alternative-contact {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+    }
+    
+    .alternative-contact h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 20px;
+    }
+    
+    .alternative-contact p {
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+    
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .email-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(102, 126, 234, 0.4);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .page-header {
+        padding: 30px 20px;
+      }
+      
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-info-card,
+      .contact-form-card {
+        padding: 30px 20px;
+      }
+      
+      header {
+        padding: 15px 20px;
+      }
+      
+      .navbar {
+        gap: 15px;
+      }
+      
+      .alternative-contact {
+        padding: 30px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h2 class="portfolio-title">Mein Portfolio</h2>
-    <nav class="navbar">
-        <a href="wer-bin-ich.html">Wer bin ich?</a>
-        <a href="bisherige-leistungen.html">Bisherige Leistungen</a>
-        <a href="kontakt.html" class="active">Kontakt</a>
-        <a href="unterlagen.html">Meine Unterlagen</a>
-    </nav>
+  <h2 class="portfolio-title">Mein Portfolio</h2>
+  <nav class="navbar">
+    <a href="wer-bin-ich.html">Wer bin ich?</a>
+    <a href="bisherige-leistungen.html">Bisherige Leistungen</a>
+    <a href="kontakt.html" class="active">Kontakt</a>
+    <a href="unterlagen.html">Meine Unterlagen</a>
+  </nav>
 </header>
 
 <div class="main-container">
-    <div class="content-container">
-        <div class="page-header">
-            <h1>📬 Kontakt</h1>
-            <p>Haben Sie weitere Fragen oder Anliegen? Dann können Sie mich gerne folgendermassen kontaktieren. Ich freue mich auf Ihre Nachricht!</p>
-        </div>
-
-        <div class="contact-grid">
-            <!-- Kontaktinformationen -->
-            <div class="contact-info-card">
-                <h2>📞 Meine Kontaktdaten</h2>
-
-                <div class="contact-item" onclick="copyToClipboard('boris.kumbric@swisscom.com')">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-details">
-                        <h4>E-Mail</h4>
-                        <p><a href="mailto:boris.kumbric@swisscom.com">boris.kumbric@swisscom.com</a></p>
-                    </div>
-                </div>
-
-                <div class="contact-item" onclick="copyToClipboard('+41 79 501 29 51')">
-                    <div class="contact-icon">📱</div>
-                    <div class="contact-details">
-                        <h4>Telefon</h4>
-                        <p><a href="tel:+41795012951">+41 79 501 29 51</a></p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-details">
-                        <h4>Standort</h4>
-                        <p>Bellach, Kanton Solothurn</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <div class="contact-details">
-                        <h4>Position</h4>
-                        <p>Informatiker EFZ - Plattformentwicklung (2. Lehrjahr)</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kontaktformular -->
-            <div class="contact-form-card">
-                <h2>✉️ Nachricht senden</h2>
-
-                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Web3Forms Access Key -->
-                    <input type="hidden" name="access_key" value="89e9d896-ea74-474d-94da-24e439e72040">
-
-                    <!-- Optionale Konfiguration -->
-                    <input type="hidden" name="subject" value="Neue Nachricht über Portfolio">
-                    <input type="hidden" name="from_name" value="Portfolio Kontaktformular">
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Ihr Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Ihre E-Mail *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject_custom">Betreff</label>
-                        <input type="text" id="subject_custom" name="subject_custom" placeholder="Worum geht es?">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Ihre Nachricht *</label>
-                        <textarea id="message" name="message" placeholder="Schreiben Sie hier Ihre Nachricht..." required></textarea>
-                    </div>
-
-                    <!-- Honeypot Spam-Schutz -->
-                    <input type="checkbox" name="botcheck" id="" style="display: none;">
-
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        📤 Nachricht senden
-                    </button>
-                </form>
-
-                <div class="form-notice">
-                    <h4>✅ Formular aktiviert:</h4>
-                    <p>Das Kontaktformular ist einsatzbereit und sendet E-Mails direkt an mich. Sie erhalten eine Bestätigung nach dem Versand.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="alternative-contact">
-            <h3>🚀 Direkter Kontakt</h3>
-            <p>Für den schnellsten Kontakt können Sie mir auch gerne direkt eine E-Mail schreiben. Ich antworte normalerweise innerhalb von 24 Stunden.</p>
-            <a href="mailto:boris.kumbric@swisscom.com?subject=Kontakt%20über%20Portfolio&body=Hallo%20Boris,%0A%0A" class="email-btn">
-                <span>📧</span>
-                E-Mail direkt schreiben
-            </a>
-        </div>
+  <div class="content-container">
+    <div class="page-header">
+      <h1>📬 Kontakt</h1>
+      <p>Haben Sie weitere Fragen oder Anliegen? Dann können Sie mich gerne folgendermassen kontaktieren. Ich freue mich auf Ihre Nachricht!</p>
     </div>
+
+    <div class="contact-grid">
+      <!-- Kontaktinformationen -->
+      <div class="contact-info-card">
+        <h2>📞 Meine Kontaktdaten</h2>
+        
+        <div class="contact-item" onclick="copyToClipboard('boris.kumbric@swisscom.com')">
+          <div class="contact-icon">📧</div>
+          <div class="contact-details">
+            <h4>E-Mail</h4>
+            <p><a href="mailto:boris.kumbric@swisscom.com">boris.kumbric@swisscom.com</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item" onclick="copyToClipboard('+41 79 501 29 51')">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <h4>Telefon</h4>
+            <p><a href="tel:+41795012951">+41 79 501 29 51</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <h4>Standort</h4>
+            <p>Bellach, Kanton Solothurn</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-details">
+            <h4>Position</h4>
+            <p>Informatiker EFZ - Plattformentwicklung (2. Lehrjahr)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kontaktformular -->
+      <div class="contact-form-card">
+        <h2>✉️ Nachricht senden</h2>
+        
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Access Key -->
+          <input type="hidden" name="access_key" value="89e9d896-ea74-474d-94da-24e439e72040">
+          <input type="hidden" name="subject" value="Kontakt über Portfolio">
+          <input type="hidden" name="from_name" value="Portfolio Kontaktformular">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Ihr Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Ihre E-Mail *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject_custom">Betreff</label>
+            <input type="text" id="subject_custom" name="subject_custom" placeholder="Worum geht es?">
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Ihre Nachricht *</label>
+            <textarea id="message" name="message" placeholder="Schreiben Sie hier Ihre Nachricht..." required></textarea>
+          </div>
+          
+          <!-- Honeypot Spam-Schutz -->
+          <input type="checkbox" name="botcheck" style="display: none;">
+          
+          <button type="submit" class="submit-btn" id="submitBtn">
+            📤 Nachricht senden
+          </button>
+        </form>
+        
+        <div class="form-notice">
+          <h4>✅ Formular aktiviert:</h4>
+          <p>Das Kontaktformular ist einsatzbereit und sendet E-Mails direkt an mich. Sie erhalten eine Bestätigung nach dem Versand.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alternative-contact">
+      <h3>🚀 Direkter Kontakt</h3>
+      <p>Für den schnellsten Kontakt können Sie mir auch gerne direkt eine E-Mail schreiben. Ich antworte normalerweise innerhalb von 24 Stunden.</p>
+      <a href="mailto:boris.kumbric@swisscom.com?subject=Kontakt%20über%20Portfolio&body=Hallo%20Boris,%0A%0A" class="email-btn">
+        <span>📧</span>
+        E-Mail direkt schreiben
+      </a>
+    </div>
+  </div>
 </div>
 
 <script>
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(function() {
-            // Kurze Bestätigung anzeigen
-            const originalText = event.target.textContent;
-            event.target.textContent = 'Kopiert! ✓';
-            event.target.style.color = '#22c55e';
-
-            setTimeout(() => {
-                event.target.textContent = originalText;
-                event.target.style.color = '';
-            }, 2000);
-        }).catch(function() {
-            console.log('Kopieren fehlgeschlagen');
-        });
-    }
-
-    // Formular Handling mit Web3Forms
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const submitBtn = document.getElementById('submitBtn');
-        const originalText = submitBtn.innerHTML;
-
-        // Prüfen ob Access Key eingetragen ist
-        const accessKey = this.querySelector('input[name="access_key"]').value;
-        if (accessKey === 'IHR_ACCESS_KEY_HIER') {
-            alert('❌ Web3Forms ist noch nicht konfiguriert!\n\nBitte tragen Sie Ihren Access Key ein.\n\nAnleitung siehe unten auf der Seite.');
-            return;
-        }
-
-        // Button Status ändern
-        submitBtn.innerHTML = '📤 Wird gesendet...';
-        submitBtn.disabled = true;
-
-        // FormData erstellen
-        const formData = new FormData(this);
-
-        // E-Mail über Web3Forms senden
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Erfolgsmeldung
-                    submitBtn.innerHTML = '✅ Gesendet!';
-                    submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-
-                    // Formular zurücksetzen
-                    this.reset();
-
-                    // Erfolgsmeldung anzeigen
-                    alert('✅ Ihre Nachricht wurde erfolgreich gesendet!\n\nIch werde Ihnen so schnell wie möglich antworten.');
-
-                    // Button nach 3 Sekunden zurücksetzen
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.style.background = '';
-                        submitBtn.disabled = false;
-                    }, 3000);
-
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-
-                // Fehlermeldung
-                submitBtn.innerHTML = '❌ Fehler';
-                submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
-
-                alert('❌ Fehler beim Senden!\n\nBitte versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.');
-
-                // Button nach 3 Sekunden zurücksetzen
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 3000);
-            });
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+      // Kurze Bestätigung anzeigen
+      const originalText = event.target.textContent;
+      event.target.textContent = 'Kopiert! ✓';
+      event.target.style.color = '#22c55e';
+      
+      setTimeout(() => {
+        event.target.textContent = originalText;
+        event.target.style.color = '';
+      }, 2000);
+    }).catch(function() {
+      console.log('Kopieren fehlgeschlagen');
     });
+  }
+
+  // Form Handling
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.innerHTML;
+    
+    // Button Status ändern
+    submitBtn.innerHTML = '📤 Wird gesendet...';
+    submitBtn.disabled = true;
+    
+    // FormData erstellen
+    const formData = new FormData(this);
+    
+    // E-Mail über Web3Forms senden
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Erfolgsmeldung
+        submitBtn.innerHTML = '✅ Gesendet!';
+        submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+        
+        // Formular zurücksetzen
+        this.reset();
+        
+        // Erfolgsmeldung anzeigen
+        alert('✅ Ihre Nachricht wurde erfolgreich gesendet!\n\nIch werde Ihnen so schnell wie möglich antworten.');
+        
+        // Button nach 3 Sekunden zurücksetzen
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+        
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      
+      // Fehlermeldung
+      submitBtn.innerHTML = '❌ Fehler';
+      submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+      
+      alert('❌ Fehler beim Senden!\n\nBitte versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.');
+      
+      // Button nach 3 Sekunden zurücksetzen
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+      }, 3000);
+    });
+  });
 </script>
 
 </body>
