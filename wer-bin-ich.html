@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebenslauf - Boris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .navbar a:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .portfolio-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .main-container {
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cv-container {
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .cv-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cv-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 200px;
+            border-radius: 12px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 30px;
+            display: block;
+            transition: transform 0.3s ease;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .cv-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .cv-header h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .cv-content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .experience-item:hover {
+            border-color: #667eea;
+            transform: translateX(8px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .experience-item h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .duration {
+            color: #718096;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .experience-item p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .experience-item li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 50px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .skill-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .skill-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .interest-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interest-tag:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .additional-info {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .additional-info h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .additional-info p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .cv-header {
+                padding: 40px 20px;
+            }
+
+            .cv-content {
+                padding: 30px 20px;
+            }
+
+            .cv-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .navbar {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2 class="portfolio-title">Mein Portfolio</h2>
+    <nav class="navbar">
+        <a href="wer-bin-ich.html">Wer bin ich?</a>
+        <a href="bisherige-leistungen.html">Bisherige Leistungen</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="unterlagen.html">Meine Unterlagen</a>
+    </nav>
+</header>
+
+<div class="main-container">
+    <div class="cv-container">
+        <div class="cv-header">
+            <div class="profile-section">
+                <img src="Unterlagen/Bild (2).jpg" alt="Boris Profil" class="profile-img">
+                <h1>Boris Kumbric</h1>
+                <h2>Informatiker EFZ - Plattformentwicklung</h2>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        boris.kumbric@swisscom.com
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span>
+                        +41 79 501 29 51
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        Bellach, Solothurn
+                    </div>
+                    <div class="contact-item">
+                        <span>📅</span>
+                        18. April 2007
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-content">
+            <div class="section">
+                <h3 class="section-title">Berufserfahrung</h3>
+                <div class="experience-item">
+                    <h4>Informatiker EFZ - Plattformentwicklung (Lehrling)</h4>
+                    <div class="company">Swisscom AG</div>
+                    <div class="duration">August 2023 - Juli 2027 (2. Lehrjahr)</div>
+                    <p>Ausbildung zum Informatiker mit Fachrichtung Plattformentwicklung. Praktische Erfahrungen in verschiedenen Projekten und Abteilungen bei Swisscom.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Cablex Field Service</h4>
+                    <div class="company">Swisscom AG - Cablex</div>
+                    <div class="duration">6 Monate</div>
+                    <p>Praktische Erfahrungen im Außendienst und bei der Installation von Telekommunikationsanlagen.</p>
+                    <ul>
+                        <li>Installation und Wartung von Netzwerkkomponenten</li>
+                        <li>Kundenbetreuung vor Ort</li>
+                        <li>Technische Problemlösung im Field Service</li>
+                        <li>Arbeiten mit professioneller Installationsausrüstung</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Mac Workplace</h4>
+                    <div class="company">Swisscom AG - Mac Support</div>
+                    <div class="duration">1 Jahr</div>
+                    <p>Spezialisierung auf Apple-Systeme und Mac-Support in der Arbeitsplatzumgebung.</p>
+                    <ul>
+                        <li>macOS-Administration und Systemkonfiguration</li>
+                        <li>Apple Business Manager und Mobile Device Management</li>
+                        <li>Deployment von Mac-Systemen in Unternehmensumgebungen</li>
+                        <li>Troubleshooting spezifischer Mac-Probleme</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Datacenter</h4>
+                    <div class="company">Swisscom AG - Rechenzentrum</div>
+                    <div class="duration">6 Monate</div>
+                    <p>Einblicke in die kritische Infrastruktur und moderne Rechenzentren.</p>
+                    <ul>
+                        <li>Server-Administration und -wartung</li>
+                        <li>Netzwerk-Infrastruktur in großen Umgebungen</li>
+                        <li>Virtualisierung und Systemüberwachung</li>
+                        <li>Backup- und Recovery-Strategien</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Ausbildung</h3>
+                <div class="experience-item">
+                    <h4>Berufslehre Informatiker EFZ - Plattformentwicklung</h4>
+                    <div class="company">Swisscom AG & Berufsfachschule</div>
+                    <div class="duration">August 2023 - Juli 2027</div>
+                    <p>4-jährige Ausbildung mit eidgenössischem Fähigkeitszeugnis in der Fachrichtung Plattformentwicklung.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Sekundarschule</h4>
+                    <div class="company">Sekundarschule Bellach</div>
+                    <div class="duration">2020 - 2023</div>
+                    <p>Abschluss der obligatorischen Schulzeit mit erfolgreichem Übergang in die Berufslehre.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Kenntnisse</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <span class="icon">🔧</span>
+                        <h4>GIT Umgebung</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">🍎</span>
+                        <h4>Apple Specialist</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">🌐</span>
+                        <h4>Netzwerk</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">☁️</span>
+                        <h4>Cloud</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">💻</span>
+                        <h4>Computer & Technik</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">🔒</span>
+                        <h4>Cyber Security</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Persönliche Stärken</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <span class="icon">🧠</span>
+                        <h4>Wissensdurst</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">🎯</span>
+                        <h4>Zielstrebigkeit</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">⚡</span>
+                        <h4>Auffassungsgabe</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">⏰</span>
+                        <h4>Pünktlichkeit</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">🔍</span>
+                        <h4>Präzision</h4>
+                    </div>
+                    <div class="skill-card">
+                        <span class="icon">✅</span>
+                        <h4>Zuverlässigkeit</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Interessen & Hobbys</h3>
+                <div class="interests-grid">
+                    <div class="interest-tag">🏋️ Fitness & Gym</div>
+                    <div class="interest-tag">🎮 Gaming</div>
+                    <div class="interest-tag">🖥️ Computer & Technik</div>
+                    <div class="interest-tag">🍏 Apple & macOS</div>
+                    <div class="interest-tag">💡 Neue Technologien</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Über mich</h3>
+                <div class="additional-info">
+                    <h4>💫 Meine Motivation</h4>
+                    <p>Technik ist nicht nur mein Beruf, sondern meine Leidenschaft! Ich bin immer auf der Suche nach neuen Herausforderungen und werde mich nach meiner Lehre sicher weiterbilden, um meine Fähigkeiten auszubauen und meine Karriere gezielt voranzutreiben.</p>
+
+                    <p>Ich bin ein motivierter und zielstrebiger Mensch, der immer bestrebt ist, das Beste aus sich herauszuholen. Präzision und Zuverlässigkeit sind für mich essenziell – ich arbeite gerne strukturiert und achte auf Details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
