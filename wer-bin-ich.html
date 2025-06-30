@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bisherige Leistungen - Boris Kumbric</title>
+  <title>Wer bin ich - Boris Kumbric</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -71,69 +71,24 @@
       justify-content: center;
     }
     
-    .content-container {
-      max-width: 1200px;
-      width: 100%;
-    }
-    
-    .page-header {
+    .cv-container {
+      max-width: 1000px;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       border-radius: 24px;
-      padding: 50px;
-      text-align: center;
-      margin-bottom: 40px;
       box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-    }
-    
-    .page-header h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
-      letter-spacing: -2px;
-    }
-    
-    .page-header p {
-      font-size: 1.3rem;
-      color: #4a5568;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .departments-grid {
-      display: grid;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    
-    .department-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
     }
     
-    .department-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 100px rgba(102, 126, 234, 0.2);
-    }
-    
-    .department-header {
+    .cv-header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 40px;
+      padding: 60px 40px;
+      text-align: center;
       position: relative;
-      overflow: hidden;
     }
     
-    .department-header::before {
+    .cv-header::before {
       content: '';
       position: absolute;
       top: 0;
@@ -144,147 +99,264 @@
       opacity: 0.3;
     }
     
-    .department-info {
+    .profile-section {
       position: relative;
       z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
     }
     
-    .department-title {
-      font-size: 2.2rem;
+    .profile-img {
+      width: 160px;
+      height: 200px;
+      border-radius: 12px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      margin: 0 auto 30px;
+      display: block;
+      transition: transform 0.3s ease;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+    
+    .cv-header h1 {
+      font-size: 3.5rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      letter-spacing: -2px;
     }
     
-    .department-subtitle {
-      font-size: 1.2rem;
+    .cv-header h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
       opacity: 0.9;
-      margin-bottom: 4px;
-    }
-    
-    .department-duration {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    .department-content {
-      padding: 40px;
-    }
-    
-    .department-description {
-      font-size: 1.2rem;
-      color: #4a5568;
-      line-height: 1.7;
       margin-bottom: 30px;
     }
     
-    .skills-section h4 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 20px;
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .contact-item {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      font-size: 1rem;
+      opacity: 0.9;
     }
     
-    .skills-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-      list-style: none;
-      padding: 0;
+    .cv-content {
+      padding: 50px 40px;
     }
     
-    .skills-list li {
+    .section {
+      margin-bottom: 50px;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 2px;
+    }
+    
+    .experience-item {
       background: #f8fafc;
       border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 16px 20px;
-      color: #4a5568;
-      font-weight: 500;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
     
-    .skills-list li::before {
-      content: '▶';
-      color: #667eea;
-      margin-right: 12px;
-      font-size: 0.9rem;
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
     
-    .skills-list li:hover {
+    .experience-item:hover {
       border-color: #667eea;
       transform: translateX(8px);
-      background: rgba(102, 126, 234, 0.05);
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
     }
     
-    .icon {
-      font-size: 1.5rem;
-    }
-    
-    .summary-section {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 50px;
-      text-align: center;
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-    }
-    
-    .summary-section h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
+    .experience-item h4 {
+      font-size: 1.4rem;
+      font-weight: 600;
       color: #2d3748;
-      margin-bottom: 30px;
+      margin-bottom: 8px;
     }
     
-    .summary-section p {
-      font-size: 1.2rem;
+    .company {
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 4px;
+    }
+    
+    .duration {
+      color: #718096;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    
+    .experience-item p {
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .experience-item ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .experience-item li {
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 24px;
+    }
+    
+    .experience-item li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-size: 0.8rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .skill-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 50px rgba(102, 126, 234, 0.2);
+      border-color: #667eea;
+    }
+    
+    .skill-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    .skill-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d3748;
+    }
+    
+    .interests-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .interest-tag {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .interest-tag:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+    }
+    
+    .additional-info {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .additional-info h4 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 20px;
+    }
+    
+    .additional-info p {
       color: #4a5568;
       line-height: 1.7;
-      max-width: 900px;
-      margin: 0 auto;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
     }
     
     @media (max-width: 768px) {
-      .page-header {
+      .contact-info {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+      
+      .cv-header {
+        padding: 40px 20px;
+      }
+      
+      .cv-content {
         padding: 30px 20px;
       }
       
-      .page-header h1 {
+      .cv-header h1 {
         font-size: 2.5rem;
       }
       
-      .department-header {
-        padding: 30px 20px;
-      }
-      
-      .department-info {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .department-title {
-        font-size: 1.8rem;
-      }
-      
-      .department-content {
-        padding: 30px 20px;
-      }
-      
-      .skills-list {
+      .skills-grid {
         grid-template-columns: 1fr;
       }
       
@@ -295,10 +367,6 @@
       .navbar {
         gap: 15px;
       }
-      
-      .summary-section {
-        padding: 30px 20px;
-      }
     }
   </style>
 </head>
@@ -307,130 +375,189 @@
 <header>
   <h2 class="portfolio-title">Mein Portfolio</h2>
   <nav class="navbar">
-    <a href="wer-bin-ich.html">Wer bin ich?</a>
-    <a href="bisherige-leistungen.html" class="active">Bisherige Leistungen</a>
+    <a href="wer-bin-ich.html" class="active">Wer bin ich?</a>
+    <a href="bisherige-leistungen.html">Bisherige Leistungen</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="unterlagen.html">Meine Unterlagen</a>
   </nav>
 </header>
 
 <div class="main-container">
-  <div class="content-container">
-    <div class="page-header">
-      <h1>Meine bisherigen Leistungen</h1>
-      <p>Während meiner Ausbildung bei Swisscom durfte ich in verschiedenen Abteilungen wertvolle Erfahrungen sammeln und meine Fähigkeiten in unterschiedlichen Bereichen der IT entwickeln.</p>
-    </div>
-
-    <div class="departments-grid">
-      <!-- Cablex Field Service -->
-      <div class="department-card">
-        <div class="department-header">
-          <div class="department-info">
-            <div>
-              <h3 class="department-title">🔧 Cablex Field Service</h3>
-              <p class="department-subtitle">Swisscom AG - Außendienst & Installation</p>
-            </div>
-            <div class="department-duration">
-              6 Monate
-            </div>
+  <div class="cv-container">
+    <div class="cv-header">
+      <div class="profile-section">
+        <img src="Unterlagen/Bild (2).jpg" alt="Boris Profil" class="profile-img">
+        <h1>Boris Kumbric</h1>
+        <h2>Informatiker EFZ - Plattformentwicklung</h2>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            boris.kumbric@swisscom.com
           </div>
-        </div>
-        <div class="department-content">
-          <p class="department-description">
-            Im Cablex Field Service habe ich praktische Erfahrungen im Außendienst gesammelt und war direkt beim Kunden vor Ort tätig. Diese Zeit hat mir gezeigt, wie wichtig Kommunikation und technisches Know-how in der Praxis sind.
-          </p>
-          <div class="skills-section">
-            <h4><span class="icon">🛠️</span> Was ich gelernt habe:</h4>
-            <ul class="skills-list">
-              <li>Installation und Konfiguration von Telekommunikationsanlagen</li>
-              <li>Wartung und Reparatur von Netzwerkkomponenten</li>
-              <li>Direkte Kundenbetreuung und Problemlösung vor Ort</li>
-              <li>Umgang mit professioneller Installationsausrüstung</li>
-              <li>Troubleshooting bei technischen Störungen</li>
-              <li>Dokumentation von Arbeitsschritten und Lösungen</li>
-              <li>Teamarbeit im Außendienst-Team</li>
-              <li>Sicherheitsbestimmungen bei Installationsarbeiten</li>
-            </ul>
+          <div class="contact-item">
+            <span>📞</span>
+            +41 79 501 29 51
           </div>
-        </div>
-      </div>
-
-      <!-- Mac Workplace -->
-      <div class="department-card">
-        <div class="department-header">
-          <div class="department-info">
-            <div>
-              <h3 class="department-title">🍎 Mac Workplace</h3>
-              <p class="department-subtitle">Swisscom AG - Apple Support & Administration</p>
-            </div>
-            <div class="department-duration">
-              1 Jahr
-            </div>
+          <div class="contact-item">
+            <span>📍</span>
+            Bellach, Solothurn
           </div>
-        </div>
-        <div class="department-content">
-          <p class="department-description">
-            Ein Jahr im Mac Workplace hat meine Leidenschaft für Apple-Systeme vertieft. Hier konnte ich meine Expertise im macOS-Umfeld ausbauen und wurde zum Apple-Spezialisten im Unternehmen.
-          </p>
-          <div class="skills-section">
-            <h4><span class="icon">💻</span> Was ich gelernt habe:</h4>
-            <ul class="skills-list">
-              <li>macOS-Administration und Systemkonfiguration</li>
-              <li>Apple Business Manager und Mobile Device Management</li>
-              <li>Deployment von Mac-Systemen in Unternehmensumgebungen</li>
-              <li>Troubleshooting spezifischer Mac-Probleme</li>
-              <li>Integration von Macs in Windows-Netzwerke</li>
-              <li>Apple Hardware-Diagnostik und Reparatur</li>
-              <li>Benutzer-Support und Schulungen für Mac-User</li>
-              <li>Automatisierung mit AppleScript und Terminal</li>
-              <li>Sicherheitsrichtlinien für Apple-Geräte</li>
-              <li>Migration von Daten zwischen Apple-Systemen</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Datacenter -->
-      <div class="department-card">
-        <div class="department-header">
-          <div class="department-info">
-            <div>
-              <h3 class="department-title">🏢 Datacenter</h3>
-              <p class="department-subtitle">Swisscom AG - Rechenzentrum & Infrastruktur</p>
-            </div>
-            <div class="department-duration">
-              6 Monate
-            </div>
-          </div>
-        </div>
-        <div class="department-content">
-          <p class="department-description">
-            Die Zeit im Datacenter gab mir Einblicke in die kritische Infrastruktur von Swisscom. Hier lernte ich, wie moderne Rechenzentren funktionieren und welche Technologien dahinter stehen.
-          </p>
-          <div class="skills-section">
-            <h4><span class="icon">🖥️</span> Was ich gelernt habe:</h4>
-            <ul class="skills-list">
-              <li>Server-Administration und -wartung</li>
-              <li>Netzwerk-Infrastruktur in großen Umgebungen</li>
-              <li>Virtualisierung mit VMware und Hyper-V</li>
-              <li>Überwachung und Monitoring von Systemen</li>
-              <li>Backup- und Recovery-Strategien</li>
-              <li>Sicherheitsprotokoll in kritischen Umgebungen</li>
-              <li>Stromversorgung und Kühlung von Servern</li>
-              <li>Incident Management und Notfallprozeduren</li>
-              <li>Dokumentation von Systemkonfigurationen</li>
-              <li>Zusammenarbeit in 24/7-Betriebsumgebungen</li>
-            </ul>
+          <div class="contact-item">
+            <span>📅</span>
+            18. April 2007
           </div>
         </div>
       </div>
     </div>
 
-    <div class="summary-section">
-      <h2>🚀 Mein Fazit</h2>
-      <p>
-        Diese vielfältigen Erfahrungen in unterschiedlichen Bereichen haben mir ein breites Verständnis für IT-Systeme vermittelt. Von der direkten Kundenbetreuung im Field Service über die Spezialisierung auf Apple-Systeme bis hin zur kritischen Infrastruktur im Datacenter – jede Station hat mich persönlich und fachlich weitergebracht. Diese Erfahrungen bilden das Fundament für meine weitere Entwicklung als Informatiker.
-      </p>
+    <div class="cv-content">
+      <div class="section">
+        <h3 class="section-title">Berufserfahrung</h3>
+        <div class="experience-item">
+          <h4>Informatiker EFZ - Plattformentwicklung (Lehrling)</h4>
+          <div class="company">Swisscom AG</div>
+          <div class="duration">August 2023 - Juli 2027 (2. Lehrjahr)</div>
+          <p>Ausbildung zum Informatiker mit Fachrichtung Plattformentwicklung. Praktische Erfahrungen in verschiedenen Projekten und Abteilungen bei Swisscom.</p>
+        </div>
+        
+        <div class="experience-item">
+          <h4>Cablex Field Service</h4>
+          <div class="company">Swisscom AG - Cablex</div>
+          <div class="duration">6 Monate</div>
+          <p>Praktische Erfahrungen im Außendienst und bei der Installation von Telekommunikationsanlagen.</p>
+          <ul>
+            <li>Installation und Wartung von Netzwerkkomponenten</li>
+            <li>Kundenbetreuung vor Ort</li>
+            <li>Technische Problemlösung im Field Service</li>
+            <li>Arbeiten mit professioneller Installationsausrüstung</li>
+          </ul>
+        </div>
+        
+        <div class="experience-item">
+          <h4>Mac Workplace</h4>
+          <div class="company">Swisscom AG - Mac Support</div>
+          <div class="duration">1 Jahr</div>
+          <p>Spezialisierung auf Apple-Systeme und Mac-Support in der Arbeitsplatzumgebung.</p>
+          <ul>
+            <li>macOS-Administration und Systemkonfiguration</li>
+            <li>Apple Business Manager und Mobile Device Management</li>
+            <li>Deployment von Mac-Systemen in Unternehmensumgebungen</li>
+            <li>Troubleshooting spezifischer Mac-Probleme</li>
+          </ul>
+        </div>
+        
+        <div class="experience-item">
+          <h4>Datacenter</h4>
+          <div class="company">Swisscom AG - Rechenzentrum</div>
+          <div class="duration">6 Monate</div>
+          <p>Einblicke in die kritische Infrastruktur und moderne Rechenzentren.</p>
+          <ul>
+            <li>Server-Administration und -wartung</li>
+            <li>Netzwerk-Infrastruktur in großen Umgebungen</li>
+            <li>Virtualisierung und Systemüberwachung</li>
+            <li>Backup- und Recovery-Strategien</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Ausbildung</h3>
+        <div class="experience-item">
+          <h4>Berufslehre Informatiker EFZ - Plattformentwicklung</h4>
+          <div class="company">Swisscom AG & Berufsfachschule</div>
+          <div class="duration">August 2023 - Juli 2027</div>
+          <p>4-jährige Ausbildung mit eidgenössischem Fähigkeitszeugnis in der Fachrichtung Plattformentwicklung.</p>
+        </div>
+        
+        <div class="experience-item">
+          <h4>Sekundarschule</h4>
+          <div class="company">Sekundarschule Bellach</div>
+          <div class="duration">2020 - 2023</div>
+          <p>Abschluss der obligatorischen Schulzeit mit erfolgreichem Übergang in die Berufslehre.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Kenntnisse</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <span class="icon">🔧</span>
+            <h4>GIT Umgebung</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">🍎</span>
+            <h4>Apple Specialist</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">🌐</span>
+            <h4>Netzwerk</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">☁️</span>
+            <h4>Cloud</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">💻</span>
+            <h4>Computer & Technik</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">🔒</span>
+            <h4>Cyber Security</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Persönliche Stärken</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <span class="icon">🧠</span>
+            <h4>Wissensdurst</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">🎯</span>
+            <h4>Zielstrebigkeit</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">⚡</span>
+            <h4>Auffassungsgabe</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">⏰</span>
+            <h4>Pünktlichkeit</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">🔍</span>
+            <h4>Präzision</h4>
+          </div>
+          <div class="skill-card">
+            <span class="icon">✅</span>
+            <h4>Zuverlässigkeit</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Interessen & Hobbys</h3>
+        <div class="interests-grid">
+          <div class="interest-tag">🏋️ Fitness & Gym</div>
+          <div class="interest-tag">🎮 Gaming</div>
+          <div class="interest-tag">🖥️ Computer & Technik</div>
+          <div class="interest-tag">🍏 Apple & macOS</div>
+          <div class="interest-tag">💡 Neue Technologien</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Über mich</h3>
+        <div class="additional-info">
+          <h4>💫 Meine Motivation</h4>
+          <p>Technik ist nicht nur mein Beruf, sondern meine Leidenschaft! Ich bin immer auf der Suche nach neuen Herausforderungen und werde mich nach meiner Lehre sicher weiterbilden, um meine Fähigkeiten auszubauen und meine Karriere gezielt voranzutreiben.</p>
+          
+          <p>Ich bin ein motivierter und zielstrebiger Mensch, der immer bestrebt ist, das Beste aus sich herauszuholen. Präzision und Zuverlässigkeit sind für mich essenziell – ich arbeite gerne strukturiert und achte auf Details.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
