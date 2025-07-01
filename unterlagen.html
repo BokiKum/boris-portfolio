@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meine Unterlagen - Boris Kumbric</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  
+  <!-- Passwortschutz Script -->
+  <script>
+    // Sofortiger Auth-Check
+    if (!sessionStorage.getItem('portfolio_auth')) {
+      window.location.href = '/index.html';
+    }
+  </script>
+  
   <style>
     * {
       margin: 0;
@@ -63,6 +72,22 @@
       font-size: 2rem;
       font-weight: 600;
       color: #667eea;
+    }
+    
+    .logout-btn {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .logout-btn:hover {
+      background: #ff5252;
+      transform: translateY(-2px);
     }
     
     .main-container {
@@ -409,6 +434,7 @@
     <a href="bisherige-leistungen.html">Bisherige Leistungen</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="unterlagen.html" class="active">Meine Unterlagen</a>
+    <button class="logout-btn" onclick="logout()">🔒 Abmelden</button>
   </nav>
 </header>
 
@@ -501,6 +527,11 @@
 </div>
 
 <script>
+  function logout() {
+    sessionStorage.removeItem('portfolio_auth');
+    window.location.href = '/index.html';
+  }
+
   function openModal() {
     document.getElementById('motivationModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
