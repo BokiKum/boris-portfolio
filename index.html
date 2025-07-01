@@ -35,19 +35,6 @@
       animation: fadeInUp 1s ease-out;
     }
     
-    .welcome-container {
-      display: none;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 60px 50px;
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2);
-      max-width: 600px;
-      margin: 20px;
-      animation: fadeInUp 1s ease-out;
-    }
-    
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -70,14 +57,14 @@
       background-clip: text;
     }
     
-    .auth-container h1, .welcome-container h1 {
+    .auth-container h1 {
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 15px;
       letter-spacing: -1px;
     }
     
-    .auth-container p, .welcome-container p {
+    .auth-container p {
       font-size: 1.2rem;
       opacity: 0.9;
       margin-bottom: 30px;
@@ -154,7 +141,7 @@
     }
     
     @media (max-width: 768px) {
-      .auth-container, .welcome-container {
+      .auth-container {
         padding: 40px 30px;
         margin: 15px;
       }
@@ -163,11 +150,11 @@
         font-size: 2.5rem;
       }
       
-      .auth-container h1, .welcome-container h1 {
+      .auth-container h1 {
         font-size: 2rem;
       }
       
-      .auth-container p, .welcome-container p {
+      .auth-container p {
         font-size: 1.1rem;
       }
     }
@@ -201,41 +188,20 @@
   </div>
 </div>
 
-<!-- Willkommensseite (nach erfolgreichem Login) -->
-<div class="welcome-container" id="welcomeContainer">
-  <div class="logo">Portfolio</div>
-  <h1>Willkommen!</h1>
-  <p>Hallo, ich bin Boris Kumbric - Informatiker EFZ in Ausbildung bei Swisscom. Schön, dass Sie mein Portfolio besuchen!</p>
-  
-  <a href="wer-bin-ich.html" class="enter-btn">
-    <span>👋</span>
-    Portfolio ansehen
-  </a>
-  
-  <div class="info">
-    Klicken Sie auf den Button, um mein Portfolio zu erkunden
-  </div>
-</div>
-
 <script>
   // Das Passwort - ÄNDERN SIE DIES!
   const correctPassword = "Portfolio2025";
   
-  function checkPassword(event) {
+      function checkPassword(event) {
     event.preventDefault();
     
     const inputPassword = document.getElementById('passwordInput').value;
     const errorMessage = document.getElementById('errorMessage');
-    const authContainer = document.getElementById('authContainer');
-    const welcomeContainer = document.getElementById('welcomeContainer');
     
     if (inputPassword === correctPassword) {
-      // Passwort korrekt - zeige Willkommensseite
-      authContainer.style.display = 'none';
-      welcomeContainer.style.display = 'block';
-      
-      // Speichere Login-Status (optional)
-      sessionStorage.setItem('authenticated', 'true');
+      // Passwort korrekt - direkt zum Portfolio weiterleiten
+      sessionStorage.setItem('portfolio_auth', 'true');
+      window.location.href = 'wer-bin-ich.html';
     } else {
       // Falsches Passwort
       errorMessage.style.display = 'block';
@@ -252,9 +218,8 @@
   
   // Prüfe ob bereits eingeloggt (beim Seitenladen)
   window.onload = function() {
-    if (sessionStorage.getItem('authenticated') === 'true') {
-      document.getElementById('authContainer').style.display = 'none';
-      document.getElementById('welcomeContainer').style.display = 'block';
+    if (sessionStorage.getItem('portfolio_auth') === 'true') {
+      window.location.href = 'wer-bin-ich.html';
     }
   }
 </script>
