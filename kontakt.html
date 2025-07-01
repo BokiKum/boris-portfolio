@@ -368,4 +368,226 @@
       }
       
       .page-header h1 {
-        font-size: 2.
+        font-size: 2.5rem;
+      }
+      
+      .contact-info-card,
+      .contact-form-card {
+        padding: 30px 20px;
+      }
+      
+      header {
+        padding: 15px 20px;
+      }
+      
+      .navbar {
+        gap: 15px;
+      }
+      
+      .alternative-contact {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2 class="portfolio-title">Mein Portfolio</h2>
+  <nav class="navbar">
+    <a href="wer-bin-ich.html">Wer bin ich?</a>
+    <a href="bisherige-leistungen.html">Bisherige Leistungen</a>
+    <a href="kontakt.html" class="active">Kontakt</a>
+    <a href="unterlagen.html">Meine Unterlagen</a>
+    <button class="logout-btn" onclick="logout()">🔒 Abmelden</button>
+  </nav>
+</header>
+
+<div class="main-container">
+  <div class="content-container">
+    <div class="page-header">
+      <h1>📬 Kontakt</h1>
+      <p>Haben Sie weitere Fragen oder Anliegen? Dann können Sie mich gerne folgendermassen kontaktieren. Ich freue mich auf Ihre Nachricht!</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Kontaktinformationen -->
+      <div class="contact-info-card">
+        <h2>📞 Meine Kontaktdaten</h2>
+        
+        <div class="contact-item" onclick="copyToClipboard('boris.kumbric@swisscom.com')">
+          <div class="contact-icon">📧</div>
+          <div class="contact-details">
+            <h4>E-Mail</h4>
+            <p><a href="mailto:boris.kumbric@swisscom.com">boris.kumbric@swisscom.com</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item" onclick="copyToClipboard('+41 79 501 29 51')">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <h4>Telefon</h4>
+            <p><a href="tel:+41795012951">+41 79 501 29 51</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <h4>Standort</h4>
+            <p>Bellach, Kanton Solothurn</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-details">
+            <h4>Position</h4>
+            <p>Informatiker EFZ - Plattformentwicklung (2. Lehrjahr)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kontaktformular -->
+      <div class="contact-form-card">
+        <h2>✉️ Nachricht senden</h2>
+        
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Access Key -->
+          <input type="hidden" name="access_key" value="89e9d896-ea74-474d-94da-24e439e72040">
+          <input type="hidden" name="subject" value="Kontakt über Portfolio">
+          <input type="hidden" name="from_name" value="Portfolio Kontaktformular">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Ihr Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Ihre E-Mail *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject_custom">Betreff</label>
+            <input type="text" id="subject_custom" name="subject_custom" placeholder="Worum geht es?">
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Ihre Nachricht *</label>
+            <textarea id="message" name="message" placeholder="Schreiben Sie hier Ihre Nachricht..." required></textarea>
+          </div>
+          
+          <!-- Honeypot Spam-Schutz -->
+          <input type="checkbox" name="botcheck" style="display: none;">
+          
+          <button type="submit" class="submit-btn" id="submitBtn">
+            📤 Nachricht senden
+          </button>
+        </form>
+        
+        <div class="form-notice">
+          <h4>✅ Formular aktiviert:</h4>
+          <p>Das Kontaktformular ist einsatzbereit und sendet E-Mails direkt an mich. Sie erhalten eine Bestätigung nach dem Versand.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alternative-contact">
+      <h3>🚀 Direkter Kontakt</h3>
+      <p>Für den schnellsten Kontakt können Sie mir auch gerne direkt eine E-Mail schreiben. Ich antworte normalerweise innerhalb von 24 Stunden.</p>
+      <a href="mailto:boris.kumbric@swisscom.com?subject=Kontakt%20über%20Portfolio&body=Hallo%20Boris,%0A%0A" class="email-btn">
+        <span>📧</span>
+        E-Mail direkt schreiben
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function logout() {
+    sessionStorage.removeItem('portfolio_auth');
+    window.location.href = '/index.html';
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+      // Kurze Bestätigung anzeigen
+      const originalText = event.target.textContent;
+      event.target.textContent = 'Kopiert! ✓';
+      event.target.style.color = '#22c55e';
+      
+      setTimeout(() => {
+        event.target.textContent = originalText;
+        event.target.style.color = '';
+      }, 2000);
+    }).catch(function() {
+      console.log('Kopieren fehlgeschlagen');
+    });
+  }
+
+  // Form Handling
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.innerHTML;
+    
+    // Button Status ändern
+    submitBtn.innerHTML = '📤 Wird gesendet...';
+    submitBtn.disabled = true;
+    
+    // FormData erstellen
+    const formData = new FormData(this);
+    
+    // E-Mail über Web3Forms senden
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Erfolgsmeldung
+        submitBtn.innerHTML = '✅ Gesendet!';
+        submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+        
+        // Formular zurücksetzen
+        this.reset();
+        
+        // Erfolgsmeldung anzeigen
+        alert('✅ Ihre Nachricht wurde erfolgreich gesendet!\n\nIch werde Ihnen so schnell wie möglich antworten.');
+        
+        // Button nach 3 Sekunden zurücksetzen
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+        
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      
+      // Fehlermeldung
+      submitBtn.innerHTML = '❌ Fehler';
+      submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+      
+      alert('❌ Fehler beim Senden!\n\nBitte versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.');
+      
+      // Button nach 3 Sekunden zurücksetzen
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+      }, 3000);
+    });
+  });
+</script>
+
+</body>
+</html>
