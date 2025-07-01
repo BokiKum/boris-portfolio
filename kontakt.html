@@ -6,11 +6,23 @@
   <title>Kontakt - Boris Kumbric</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
   
-  <!-- Passwortschutz Script -->
+  <!-- Sofortiger Auth-Check -->
   <script>
-    // Sofortiger Auth-Check
-    if (!sessionStorage.getItem('portfolio_auth')) {
-      window.location.href = '/index.html';
+    const portfolioAuth = sessionStorage.getItem('portfolio_auth');
+    const authTimestamp = sessionStorage.getItem('auth_timestamp');
+    
+    if (portfolioAuth !== 'true' || !authTimestamp) {
+      window.location.href = 'index.html';
+    } else {
+      // Session-Timeout prüfen (24 Stunden)
+      const elapsed = Date.now() - parseInt(authTimestamp);
+      const twentyFourHours = 24 * 60 * 60 * 1000;
+      
+      if (elapsed > twentyFourHours) {
+        sessionStorage.removeItem('portfolio_auth');
+        sessionStorage.removeItem('auth_timestamp');
+        window.location.href = 'index.html';
+      }
     }
   </script>
   
@@ -128,37 +140,6 @@
       line-height: 1.6;
       max-width: 800px;
       margin: 0 auto;
-    }
-    
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    
-    .contact-info-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 50px;
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-    
-    .contact-info-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 100px rgba(102, 126, 234, 0.2);
-    }
-    
-    .contact-info-card h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #2d3748;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
     }
     
     .contact-item {
@@ -506,9 +487,33 @@
 </div>
 
 <script>
+  // Kontinuierliche Auth-Überprüfung
+  function checkAuth() {
+    const portfolioAuth = sessionStorage.getItem('portfolio_auth');
+    const authTimestamp = sessionStorage.getItem('auth_timestamp');
+    
+    if (portfolioAuth !== 'true' || !authTimestamp) {
+      window.location.href = 'index.html';
+      return false;
+    }
+    
+    // Session-Timeout prüfen (24 Stunden)
+    const elapsed = Date.now() - parseInt(authTimestamp);
+    const twentyFourHours = 24 * 60 * 60 * 1000;
+    
+    if (elapsed > twentyFourHours) {
+      alert('Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.');
+      logout();
+      return false;
+    }
+    
+    return true;
+  }
+  
   function logout() {
     sessionStorage.removeItem('portfolio_auth');
-    window.location.href = '/index.html';
+    sessionStorage.removeItem('auth_timestamp');
+    window.location.href = 'index.html';
   }
 
   function copyToClipboard(text) {
@@ -587,7 +592,46 @@
       }, 3000);
     });
   });
+  
+  // Page Load
+  window.onload = function() {
+    checkAuth();
+  }
+  
+  // Überprüfe Auth alle 30 Sekunden
+  setInterval(checkAuth, 30000);
 </script>
 
 </body>
-</html>
+</html>grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .contact-info-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 100px rgba(102, 126, 234, 0.2);
+    }
+    
+    .contact-info-card h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .contact-
