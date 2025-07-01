@@ -542,7 +542,7 @@
     document.body.style.overflow = 'auto';
   }
   
-  // Modal schließen wenn außerhalb geklickt wird
+  // Modal schliessen wenn ausserhalb geklickt wird
   window.onclick = function(event) {
     const modal = document.getElementById('motivationModal');
     if (event.target == modal) {
@@ -550,7 +550,7 @@
     }
   }
   
-  // ESC Taste zum Schließen
+  // ESC Taste zum Schliessen
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
       closeModal();
@@ -589,7 +589,7 @@
         // Erfolgsmeldung anzeigen
         alert('✅ Ihre Anfrage wurde erfolgreich gesendet!\n\nIch werde Ihnen ein individuelles Motivationsschreiben erstellen und Ihnen per E-Mail zusenden.');
         
-        // Modal nach 2 Sekunden schließen
+        // Modal nach 2 Sekunden schliessen
         setTimeout(() => {
           closeModal();
           submitBtn.innerHTML = originalText;
