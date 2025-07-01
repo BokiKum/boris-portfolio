@@ -112,6 +112,8 @@
       font-size: 1.1rem;
       cursor: pointer;
       font-family: 'Inter', sans-serif;
+      width: 100%;
+      justify-content: center;
     }
     
     .enter-btn:hover, .login-btn:hover {
@@ -186,20 +188,37 @@
   <div class="error-message" id="errorMessage">
     ❌ Falsches Passwort. Bitte versuchen Sie es erneut.
   </div>
+  
+  <div class="info">
+    <p>🔐 Geschützter Bereich - Nur mit gültigem Passwort</p>
+  </div>
 </div>
 
 <script>
-  const correctPassword = "Portfolio2025";
+  // Mehrfach verschleiertes Passwort
+  const k1 = [80, 111, 114, 116, 102, 111, 108, 105, 111, 50, 48, 50, 53];
+  const k2 = btoa(String.fromCharCode(...k1.map(x => x ^ 42)));
+  const k3 = k2.split('').reverse().join('');
+  const k4 = k3.replace(/[A-Za-z]/g, c => String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26));
   
-      function checkPassword(event) {
+  function getCorrectPassword() {
+    const step1 = k4.replace(/[A-Za-z]/g, c => String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26));
+    const step2 = step1.split('').reverse().join('');
+    const step3 = atob(step2);
+    return step3.split('').map(c => String.fromCharCode(c.charCodeAt(0) ^ 42)).join('');
+  }
+  
+  function checkPassword(event) {
     event.preventDefault();
     
     const inputPassword = document.getElementById('passwordInput').value;
+    const correctPassword = getCorrectPassword();
     const errorMessage = document.getElementById('errorMessage');
     
     if (inputPassword === correctPassword) {
-      // Passwort korrekt - direkt zum Portfolio weiterleiten
+      // Passwort korrekt - Portfolio-Authentifizierung setzen
       sessionStorage.setItem('portfolio_auth', 'true');
+      sessionStorage.setItem('auth_timestamp', Date.now().toString());
       window.location.href = 'wer-bin-ich.html';
     } else {
       // Falsches Passwort
@@ -217,8 +236,22 @@
   
   // Prüfe ob bereits eingeloggt (beim Seitenladen)
   window.onload = function() {
-    if (sessionStorage.getItem('portfolio_auth') === 'true') {
-      window.location.href = 'wer-bin-ich.html';
+    const portfolioAuth = sessionStorage.getItem('portfolio_auth');
+    const authTimestamp = sessionStorage.getItem('auth_timestamp');
+    
+    if (portfolioAuth === 'true' && authTimestamp) {
+      // Prüfe Session-Timeout (24 Stunden)
+      const elapsed = Date.now() - parseInt(authTimestamp);
+      const twentyFourHours = 24 * 60 * 60 * 1000;
+      
+      if (elapsed < twentyFourHours) {
+        // Session noch gültig
+        window.location.href = 'wer-bin-ich.html';
+      } else {
+        // Session abgelaufen
+        sessionStorage.removeItem('portfolio_auth');
+        sessionStorage.removeItem('auth_timestamp');
+      }
     }
   }
 </script>
